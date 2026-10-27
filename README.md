@@ -2,12 +2,6 @@
 
 <p align="center"><img src="docs/assets/hero-ai.png" alt="Describe a floor plan in plain words and AI draws it in AutoCAD: a two-room plan with walls, doors, windows, dimensions and schedules, drawn in 43 seconds versus about an hour by hand" width="100%"></p>
 
-> Republished by [ferasmed-dev](https://github.com/ferasmed-dev).
-> Based on [U-C4N/Autocad-MCP](https://github.com/U-C4N/Autocad-MCP) by Umutcan Edizsalan,
-> used under the MIT License (see [LICENSE](LICENSE)). All original code and credit belong to the original author.
-
----
-
 ## How to install
 
 Just text me on Instagram, [@feras.elhs](https://www.instagram.com/feras.elhs/), and I'll help you set it up.
@@ -148,3 +142,9 @@ Already added the connector to Claude Code another way? Keep only one: turn the 
 
 > [!NOTE]
 > Re-measured for 1.7.0 with `benchmarks/token_suite.py`'s idle lane, over the real in-memory server. These are offline ratio estimates, not tokenizer counts, and they are the *uncached* cost: prompt caching amortises the idle term. 1.7 made the default surface 5,305 tokens dearer than 1.6.0 (lean 2,405): one more tool, plus the revision, preview and requirement parameters added to existing ones. `benchmarks/token_suite.py --tokenizer anthropic` counts for real.
+
+## Credits
+
+Republished by [ferasmed-dev](https://github.com/ferasmed-dev).
+Based on [U-C4N/Autocad-MCP](https://github.com/U-C4N/Autocad-MCP) by Umutcan Edizsalan,
+used under the MIT License (see [LICENSE](LICENSE)). All original code and credit belong to the original author.
