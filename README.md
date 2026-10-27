@@ -8,6 +8,58 @@
 
 ---
 
+## How to install
+
+It takes about 5 minutes and works on **Windows** and **macOS**. You need the [Claude Desktop](https://claude.ai/download) app. On Windows, AutoCAD can be drawn in live while it is open. On macOS, the drawings are saved as DXF files that you open in AutoCAD for Mac.
+
+**1. Install uv** (it downloads and runs the connector for you).
+
+On Windows, open **PowerShell** and run:
+
+```powershell
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+```
+
+On macOS, open **Terminal** and run:
+
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+**2. Open the Claude Desktop config.** In Claude Desktop, go to **Settings → Developer → Edit Config**. This opens a file called `claude_desktop_config.json`.
+
+**3. Paste this into the file** and save it. If the file already has an `"mcpServers"` section, add only the `"autocad"` part inside it.
+
+```json
+{
+  "mcpServers": {
+    "autocad": {
+      "command": "uvx",
+      "args": [
+        "--from",
+        "autocad-mcp-pro[com,pdf,office] @ git+https://github.com/ferasmed-dev/AI-to-Autocad",
+        "autocad-mcp"
+      ],
+      "env": {
+        "AUTOCAD_MCP_BACKEND": "auto"
+      }
+    }
+  }
+}
+```
+
+**4. Restart Claude Desktop** (quit it fully, then open it again). On Windows, open AutoCAD first if you want Claude to draw in it live.
+
+**5. Try it.** Ask Claude something like:
+
+> Draw a 9 × 6 m ground floor in brick: a living room and a hall, two doors, two windows and a stair. Add dimensions and schedules, and save it to my Documents folder.
+
+If Claude says it can't find `uvx`, replace `"uvx"` in step 3 with its full path: `C:\Users\YOUR-NAME\.local\bin\uvx.exe` on Windows, or `/Users/YOUR-NAME/.local/bin/uvx` on macOS.
+
+### OR
+
+Just text me on Instagram, [@feras.elhs](https://www.instagram.com/feras.elhs/), and I'll help you set it up.
+
 ## What you get
 
 | Area | What it does |
