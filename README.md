@@ -14,7 +14,14 @@ Just text me on Instagram, [@feras.elhs](https://www.instagram.com/feras.elhs/),
 
 ### OR set it up yourself
 
-It takes about 5 minutes and works on **Windows** and **macOS**. You need the [Claude Desktop](https://claude.ai/download) app. On Windows, AutoCAD can be drawn in live while it is open. On macOS, the drawings are saved as DXF files that you open in AutoCAD for Mac.
+It takes about 5 minutes and works on **Windows** and **macOS**. On Windows, AutoCAD can be drawn in live while it is open. On macOS, the drawings are saved as DXF files that you open in AutoCAD for Mac. Pick the app you use:
+
+<details>
+<summary><b>Claude Desktop app</b></summary>
+
+<br>
+
+You need the [Claude Desktop](https://claude.ai/download) app.
 
 **1. Install uv** (it downloads and runs the connector for you).
 
@@ -59,6 +66,30 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 > Draw a 9 × 6 m ground floor in brick: a living room and a hall, two doors, two windows and a stair. Add dimensions and schedules, and save it to my Documents folder.
 
 If Claude says it can't find `uvx`, replace `"uvx"` in step 3 with its full path: `C:\Users\YOUR-NAME\.local\bin\uvx.exe` on Windows, or `/Users/YOUR-NAME/.local/bin/uvx` on macOS.
+
+</details>
+
+<details>
+<summary><b>Claude Code plugin</b></summary>
+
+<br>
+
+The plugin installs the connector and the premium drafting skill together. The skill teaches Claude the careful workflow: requirements → geometry → checked on the drawing → saved → reopened → delivered.
+
+**1. Install uv** if you don't have it yet (same commands as in the Claude Desktop steps: PowerShell on Windows, Terminal on macOS).
+
+**2. Add the plugin.** In a terminal, run:
+
+```bash
+claude plugin marketplace add ferasmed-dev/AI-to-Autocad
+claude plugin install autocad-mcp-pro@autocad-mcp
+```
+
+**3. Restart Claude Code** and ask it to draw something, for example a 9 × 6 m ground floor with a living room, a hall, dimensions and schedules. On Windows, open AutoCAD first if you want Claude to draw in it live.
+
+Already added the connector to Claude Code another way? Keep only one: turn the plugin's `autocad` server off in `/mcp`, or copy `.claude/skills/autocad-mcp-premium/` into your own `.claude/skills/` instead of installing the plugin. [`plugin/README.md`](plugin/README.md) has the details.
+
+</details>
 
 ## What you get
 
