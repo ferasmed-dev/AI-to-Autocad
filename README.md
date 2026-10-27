@@ -1,5 +1,7 @@
 # Autocad connector to Claude
 
+<p align="center"><img src="docs/assets/hero.png" alt="Describe a floor plan in plain words and Claude draws it in AutoCAD: a two-room plan with walls, doors, windows, dimensions and schedules, drawn in 43 seconds versus about an hour by hand" width="100%"></p>
+
 > Republished by [ferasmed-dev](https://github.com/ferasmed-dev).
 > Based on [U-C4N/Autocad-MCP](https://github.com/U-C4N/Autocad-MCP) by Umutcan Edizsalan,
 > used under the MIT License (see [LICENSE](LICENSE)). All original code and credit belong to the original author.
