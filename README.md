@@ -1,3 +1,11 @@
+# Autocad connector to Claude
+
+> Republished by [ferasmed-dev](https://github.com/ferasmed-dev).
+> Based on [U-C4N/Autocad-MCP](https://github.com/U-C4N/Autocad-MCP) by Umutcan Edizsalan,
+> used under the MIT License (see [LICENSE](LICENSE)). All original code and credit belong to the original author.
+
+---
+
 <div align="center">
 
 # AutoCAD MCP Pro
