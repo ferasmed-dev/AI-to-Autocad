@@ -369,31 +369,14 @@ def _release_versions() -> dict[str, str]:
     for entry in _json_file(".claude-plugin/marketplace.json")["plugins"]:
         found[f"marketplace entry {entry['name']}"] = entry["version"]
 
-    servers = _json_file("plugin/.mcp.json")["mcpServers"]
-    pins = [
-        pin
-        for server_entry in servers.values()
-        for arg in server_entry.get("args", [])
-        for pin in re.findall(r"==(\d+\.\d+\.\d+)", arg)
-    ]
-    found["plugin/.mcp.json pin"] = pins[0] if len(pins) == 1 else f"<{len(pins)} pins>"
-
-    readme_pins = re.findall(
-        rf"{re.escape(name)}\[[^\]]*\]==(\d+\.\d+\.\d+)",
-        (ROOT / "README.md").read_text(encoding="utf-8"),
-    )
-    found["README plugin pin"] = (
-        readme_pins[0] if len(readme_pins) == 1 else f"<{len(readme_pins)} pins>"
-    )
     return found
 
 
 def test_every_release_artifact_carries_the_pyproject_version() -> None:
-    """pyproject, version.py, server.json, uv.lock, the plugin, its marketplace
-    entry, the MCP pin and the README's copy of it are eight places one release
-    number is written; a release that moves only some of them installs the
-    previous server from the plugin (the pin), tells a reader to install it
-    (the README) or fails every locked CI lane (the lock)."""
+    """pyproject, version.py, server.json, uv.lock, the plugin and its
+    marketplace entry are the places one release number is written; a release
+    that moves only some of them fails every locked CI lane (the lock). (This
+    fork's plugin runs the server from GitHub, so it carries no version pin.)"""
     expected = _pyproject_version()
     disagree = {where: got for where, got in _release_versions().items() if got != expected}
     assert not disagree, f"pyproject says {expected}; these disagree: {disagree}"

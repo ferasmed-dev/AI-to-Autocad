@@ -178,16 +178,12 @@ def test_versions_agree_across_package_plugin_marketplace_and_pin() -> None:
     marketplace = _json(MARKETPLACE)
     entries = [entry for entry in marketplace["plugins"] if entry["name"] == PLUGIN_NAME]
     assert len(entries) == 1, f"marketplace lists {PLUGIN_NAME} {len(entries)} times"
-    pins = re.findall(r"==(\d+\.\d+\.\d+)", PLUGIN_MCP.read_text(encoding="utf-8"))
 
     found = {
         "version.py": version_module.package_version(),
         "plugin.json": plugin["version"],
         "marketplace entry": entries[0]["version"],
     }
-    assert pins, "plugin/.mcp.json carries no ==<version> pin"
-    for index, pin in enumerate(pins):
-        found[f".mcp.json pin {index}"] = pin
     mismatched = {where: value for where, value in found.items() if value != expected}
     assert not mismatched, f"pyproject is {expected}; these disagree: {mismatched}"
 
@@ -200,14 +196,15 @@ def test_marketplace_lists_exactly_the_one_plugin_by_its_owner() -> None:
     assert _json(PLUGIN_MANIFEST)["name"] == PLUGIN_NAME
 
 
-def test_mcp_json_runs_the_pinned_package_with_its_extras() -> None:
+def test_mcp_json_runs_this_repository_with_its_extras() -> None:
     servers = _json(PLUGIN_MCP)["mcpServers"]
     assert list(servers) == ["autocad"], "the plugin starts exactly one server"
     server = servers["autocad"]
     assert server["command"] == "uvx"
     args = " ".join(server["args"])
-    version = _pyproject_version()
-    assert f"autocad-mcp-pro[com,pdf,office]=={version}" in args
+    # This fork's plugin runs ferasmed-dev/AI-to-Autocad from GitHub, not the
+    # upstream PyPI release, so it carries no ==<version> pin.
+    assert "autocad-mcp-pro[com,pdf,office] @ git+https://github.com/ferasmed-dev/AI-to-Autocad" in args
     assert server["args"][-1] == "autocad-mcp"
 
 
