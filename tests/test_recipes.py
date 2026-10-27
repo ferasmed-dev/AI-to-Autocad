@@ -573,7 +573,7 @@ def test_the_inventory_and_the_readme_count_the_two_resources():
     uris = {row["uri"] for row in inventory["resources"]}
     assert {"autocad://recipes/index", "autocad://recipes/{recipe_id}"} <= uris
     assert inventory["totals"]["resources"] == len(inventory["resources"]) == 11
-    readme = (root / "README.md").read_text(encoding="utf-8")
+    readme = (root / "docs" / "REFERENCE.md").read_text(encoding="utf-8")
     assert "· 11 resources ·" in readme and "recipes/index" in readme
 
 

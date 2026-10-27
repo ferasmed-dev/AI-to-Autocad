@@ -204,7 +204,10 @@ def test_mcp_json_runs_this_repository_with_its_extras() -> None:
     args = " ".join(server["args"])
     # This fork's plugin runs ferasmed-dev/AI-to-Autocad from GitHub, not the
     # upstream PyPI release, so it carries no ==<version> pin.
-    assert "autocad-mcp-pro[com,pdf,office] @ git+https://github.com/ferasmed-dev/AI-to-Autocad" in args
+    assert (
+        "autocad-mcp-pro[com,pdf,office] @ git+https://github.com/ferasmed-dev/AI-to-Autocad"
+        in args
+    )
     assert server["args"][-1] == "autocad-mcp"
 
 

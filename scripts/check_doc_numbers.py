@@ -113,28 +113,33 @@ def derived() -> dict[str, object]:
 #: itself a failure: the sentence it was written for has moved, and a silent
 #: no-op gate is worse than no gate.
 CHECKS: list[tuple[str, str, str, str]] = [
-    ("README.md", "release snapshot tools", r"release snapshot:\*\*\s*(\d+) tools", "tools"),
     (
-        "README.md",
+        "docs/REFERENCE.md",
+        "release snapshot tools",
+        r"release snapshot:\*\*\s*(\d+) tools",
+        "tools",
+    ),
+    (
+        "docs/REFERENCE.md",
         "release snapshot resources",
         r"release snapshot:.*?(\d+) resources",
         "resources",
     ),
     (
-        "README.md",
+        "docs/REFERENCE.md",
         "release snapshot prompts",
         r"release snapshot:.*?(\d+) prompt templates",
         "prompts",
     ),
-    ("README.md", "A/B suite size", r"(\d+) deterministic headless checks", "ab_total"),
+    ("docs/REFERENCE.md", "A/B suite size", r"(\d+) deterministic headless checks", "ab_total"),
     (
-        "README.md",
+        "docs/REFERENCE.md",
         "A/B baseline pass",
         AB_BASELINE_LABEL + r" \*\(baseline\)\* \| (\d+) / \d+",
         "ab_old_pass",
     ),
     (
-        "README.md",
+        "docs/REFERENCE.md",
         "A/B suite denominator",
         AB_BASELINE_LABEL + r" \*\(baseline\)\* \| \d+ / (\d+)",
         "ab_total",
@@ -153,19 +158,19 @@ CHECKS: list[tuple[str, str, str, str]] = [
         "ab_total",
     ),
     (
-        "README.md",
+        "docs/REFERENCE.md",
         "release snapshot collected tests",
         r"release snapshot:.*?(\d+) collected tests",
         "collected_tests",
     ),
     (
-        "README.md",
+        "docs/REFERENCE.md",
         "A/B baseline pass rate",
         AB_BASELINE_LABEL + r" \*\(baseline\)\* \| \d+ / \d+ \| ([\d.]+) %",
         "ab_old_pct",
     ),
     (
-        "README.md",
+        "docs/REFERENCE.md",
         "A/B fixed count",
         AB_CURRENT_LABEL
         + r"\*\* \*\(this release\)\* \| \*\*\d+ / \d+\*\* \| \*\*\d+ %\*\* \| (\d+)",
