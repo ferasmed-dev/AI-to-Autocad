@@ -10,6 +10,10 @@
 
 ## How to install
 
+Just text me on Instagram, [@feras.elhs](https://www.instagram.com/feras.elhs/), and I'll help you set it up.
+
+### OR set it up yourself
+
 It takes about 5 minutes and works on **Windows** and **macOS**. You need the [Claude Desktop](https://claude.ai/download) app. On Windows, AutoCAD can be drawn in live while it is open. On macOS, the drawings are saved as DXF files that you open in AutoCAD for Mac.
 
 **1. Install uv** (it downloads and runs the connector for you).
@@ -55,10 +59,6 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 > Draw a 9 × 6 m ground floor in brick: a living room and a hall, two doors, two windows and a stair. Add dimensions and schedules, and save it to my Documents folder.
 
 If Claude says it can't find `uvx`, replace `"uvx"` in step 3 with its full path: `C:\Users\YOUR-NAME\.local\bin\uvx.exe` on Windows, or `/Users/YOUR-NAME/.local/bin/uvx` on macOS.
-
-### OR
-
-Just text me on Instagram, [@feras.elhs](https://www.instagram.com/feras.elhs/), and I'll help you set it up.
 
 ## What you get
 
